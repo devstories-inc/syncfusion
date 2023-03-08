@@ -1595,8 +1595,8 @@ class RenderRadialAxisWidget extends RenderBox {
               ? getDegreeToRadian(-_cornerAngle)
               : getDegreeToRadian(_cornerAngle);
           _sweepCornerRadian = isInversed
-              ? getDegreeToRadian((-_sweepAngle) + (2 * _cornerAngle))
-              : getDegreeToRadian(_sweepAngle - (2 * _cornerAngle));
+              ? getDegreeToRadian((-_sweepAngle) + (1.5 * _cornerAngle))
+              : getDegreeToRadian(_sweepAngle - (1.5 * _cornerAngle));
         }
         break;
       case CornerStyle.bothFlat:
