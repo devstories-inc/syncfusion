@@ -1595,8 +1595,8 @@ class RenderRadialAxisWidget extends RenderBox {
               ? getDegreeToRadian(-_cornerAngle)
               : getDegreeToRadian(_cornerAngle);
           _sweepCornerRadian = isInversed
-              ? getDegreeToRadian((-_sweepAngle) + (1.5 * _cornerAngle))
-              : getDegreeToRadian(_sweepAngle - (1.5 * _cornerAngle));
+              ? getDegreeToRadian((-_sweepAngle) + (2 * _cornerAngle))
+              : getDegreeToRadian(_sweepAngle - (2 * _cornerAngle));
         }
         break;
       case CornerStyle.bothFlat:
@@ -2404,10 +2404,15 @@ class RenderRadialAxisWidget extends RenderBox {
     double midEndAngle = midStartAngle + getDegreeToRadian(180);
     midEndAngle = isInversed ? -midEndAngle : midEndAngle;
     path.addArc(
-        Rect.fromCircle(
-            center: midPoint, radius: (innerRadius - outerRadius).abs() / 2),
+        Rect.fromCenter(
+            center: midPoint, width: (innerRadius - outerRadius).abs(), height: (innerRadius - outerRadius).abs() / 2),
         midStartAngle,
         midEndAngle);
+    // path.addArc(
+    //     Rect.fromCircle(
+    //         center: midPoint, radius: (innerRadius - outerRadius).abs() / 2),
+    //     midStartAngle,
+    //     midEndAngle);
   }
 
   ///Draws the end corner curve
@@ -2427,9 +2432,15 @@ class RenderRadialAxisWidget extends RenderBox {
         ? midStartAngle - getDegreeToRadian(180)
         : midStartAngle + getDegreeToRadian(180);
 
+    // path.arcTo(
+    //     Rect.fromCircle(
+    //         center: midPoint, radius: (innerRadius - outerRadius).abs() / 2),
+    //     midStartAngle,
+    //     midEndAngle,
+    //     false);
     path.arcTo(
-        Rect.fromCircle(
-            center: midPoint, radius: (innerRadius - outerRadius).abs() / 2),
+        Rect.fromCenter(
+            center: midPoint, width: (innerRadius - outerRadius).abs(), height: (innerRadius - outerRadius).abs() / 2),
         midStartAngle,
         midEndAngle,
         false);
